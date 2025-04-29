@@ -5,7 +5,7 @@ table without id
 from ""
 where file.name = this.file.name
 flatten file.headings as heading
-where heading.level = 2
+where heading.level <= 2
 sort heading.position
 
 ```
