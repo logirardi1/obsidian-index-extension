@@ -1,4 +1,5 @@
 ## Índice
+<<<<<<< Updated upstream
 ```dataview
 table without id
   link(file.link, heading) as "Seções"
@@ -7,6 +8,14 @@ where file.name = this.file.name
 flatten file.headings as heading
 where heading.level = 2
 sort heading.position
+=======
+```dataviewjs
+const headings = dv.current().file.headings;
+for (let heading of headings) {
+    const indent = "&nbsp;".repeat((heading.level - 2) * 4);
+    dv.el("div", dv.markdownTable([["Seção"]], [[`${indent} [${heading.text}](#${heading.heading})`]]));
+}
+>>>>>>> Stashed changes
 
 ```
 
