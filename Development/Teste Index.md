@@ -1,11 +1,11 @@
 ## Índice
 ```dataview
 table without id
-  link(this.file.link, heading) as "Seções"
+  link(file.link, heading) as "Seções"
 from ""
 flatten file.headings as heading
 where heading.level <= 2
-  and heading.text != "Índice"  // Exclui o título do próprio índice
+  and heading.text != this.file.name  // Exclui o título do próprio arquivo
 sort heading.position
 
 ```
