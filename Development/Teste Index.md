@@ -1,15 +1,12 @@
 ## Índice
-```dataviewjs
-const headings = dv.current().file.headings;
-
-if (headings && headings.length > 0) {
-    for (let heading of headings) {
-        const indent = "&nbsp;".repeat((heading.level - 2) * 4);
-        dv.el("div", dv.markdownTable([["Seção"]], [[`${indent} [${heading.text}](#${heading.heading})`]]));
-    }
-} else {
-    dv.el("div", "Nenhum título encontrado neste arquivo.");
-}
+```dataview
+table without id
+  link(this.file.link, heading) as "Seções"
+from ""
+flatten file.headings as heading
+where heading.level <= 2
+  and heading.text != "Índice"  // Exclui o título do próprio índice
+sort heading.position
 
 ```
 
